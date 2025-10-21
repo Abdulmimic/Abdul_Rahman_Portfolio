@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Abdul Rahman K — Portfolio</title>
+    <style>
+      /* Times New Roman only, professional + hover pop effect + aligned contacts */
+      :root {
+        --accent: #0b63d6;
+        --muted: #5a636b;
+        --bg: #f5f7fa;
+        --card: #ffffff;
+        --border: rgba(16, 24, 40, 0.06);
+        --shadow-soft: 0 6px 18px rgba(14, 30, 37, 0.04);
+        --shadow-strong: 0 14px 32px rgba(14, 30, 37, 0.12);
+        --maxw: 980px;
+        font-family: "Times New Roman", Times, serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .container {
+        max-width: var(--maxw);
+        margin: 34px auto;
+        padding: 28px;
+      }
+      /* Header */
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .identity {
+        flex: 1;
+        min-width: 220px;
+      }
+      h1 {
+        margin: 0;
+        font-size: 32px;
+      }
+      .subtitle {
+        margin: 6px 0 0 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+      /* CONTACTS: single line, separators, vertically centered */
+      .contacts {
+        margin-top: 10px;
+        display: flex;
+        gap: 14px;
+        align-items: center;
+        flex-wrap: wrap;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .contact-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap;
+      }
+      .sep {
+        width: 1px;
+        height: 16px;
+        background: rgba(0, 0, 0, 0.08);
+        margin: 0 6px;
+        display: inline-block;
+      }
+
+      /* profile photo */
+      .photo-wrap {
+        width: 120px;
+        height: 120px;
+        flex: 0 0 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .photo {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #fff;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        background: #fff;
+      }
+
+      main {
+        margin-top: 22px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+      /* CARD styles and hover/pop behaviour */
+      section.card {
+        background: var(--card);
+        padding: 16px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-soft);
+        transition: transform 200ms ease, box-shadow 200ms ease,
+          border-color 200ms ease;
+        cursor: default;
+        outline: none;
+      }
+      /* pop on hover and keyboard focus */
+      section.card:hover,
+      section.card:focus-within,
+      section.card:focus {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-strong);
+        border-color: rgba(11, 99, 214, 0.18);
+      }
+
+      h2 {
+        margin: 0 0 10px 0;
+        font-size: 18px;
+        border-left: 4px solid var(--accent);
+        padding-left: 10px;
+        color: #0d2b4f;
+      }
+      p,
+      li {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      ul {
+        margin: 8px 0 0 18px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .grid-2 {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+      }
+      .col {
+        flex: 1;
+        min-width: 220px;
+      }
+
+      .proj-title {
+        font-weight: 700;
+        color: #0d2b4f;
+        margin-bottom: 6px;
+      }
+      .proj-sub {
+        font-style: italic;
+        color: var(--muted);
+        font-size: 13px;
+        margin-bottom: 8px;
+      }
+
+      footer {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+        padding-bottom: 8px;
+      }
+
+      /* Responsive: keep contacts tidy on small screens */
+      @media (max-width: 720px) {
+        .header {
+          align-items: flex-start;
+        }
+        .photo-wrap {
+          order: 3;
+          margin-top: 10px;
+        }
+        .contacts {
+          gap: 10px;
+        }
+        .sep {
+          display: none;
+        }
+      }
+
+      /* Make section elements keyboard-focusable for accessibility:
+     (if you add click handlers later, keep role=button or <a>) */
+      section.card {
+        tabindex: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Header -->
+      <header class="header">
+        <div class="identity">
+          <h1>Abdul Rahman K</h1>
+          <p class="subtitle">
+            Final-year B.Tech — Biomedical Engineering · AI & Deep Learning for
+            Healthcare
+          </p>
+
+          <!-- CONTACTS: single straight line with separators -->
+          <div class="contacts" aria-label="Contact information">
+            <div class="contact-item">Karaikal, Puducherry, India</div>
+            <span class="sep" aria-hidden="true"></span>
+            <div class="contact-item">
+              ✉ <a href="mailto:rahmnabd24@mail.com">rahmnabd24@mail.com</a>
+            </div>
+            <span class="sep" aria-hidden="true"></span>
+            <div class="contact-item">📞 +91 9150916787</div>
+            <span class="sep" aria-hidden="true"></span>
+            <div class="contact-item">
+              LinkedIn:
+              <a
+                href="https://www.linkedin.com/in/abdul-rahman-bm"
+                target="_blank"
+                >/abdul-rahman-bm</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Profile photo on the right (Option B) -->
+        <div class="photo-wrap" aria-hidden="true">
+          <!-- save your chosen passport-style image as profile.jpg in same folder -->
+          <img
+            src="profile.jpg"
+            alt="Profile photo of Abdul Rahman"
+            class="photo"
+          />
+        </div>
+      </header>
+
+      <main>
+        <!-- Summary (formatted like other sections) -->
+<section class="card" role="region" aria-label="Summary">
+  <div style="background:#e9f0fb;padding:10px 12px;border-radius:6px 6px 0 0;border:1px solid rgba(11,99,214,0.08);margin:-16px -16px 6px -16px">
+    <h2 style="margin:0;font-size:15px;padding:0;color:#000000;letter-spacing:2px">SUMMARY</h2>
+  </div>
+
+  <p style="margin-top:10px; line-height:1.6; color:var(--muted); padding:0 6px 12px 0;">
+    I am a Final-year Biomedical Engineering student with a growing passion for Artificial Intelligence and Emerging Technologies, which I aim to apply in the field of Clinical Research and Device Development.
+    My Academic foundation in Biomedical Systems, combined with practical exposure to AI-based Projects, has shaped my interest in exploring data-driven approaches for solving real-world challenges.
+    I am eager to expand my expertise, contribute to innovative projects, and build a career at the intersection of engineering, AI, and research.
+  </p>
+</section>
+
+
+        <!-- Education (same style as Technical Skills) -->
+<section class="card" role="region" aria-label="Education">
+  <div style="background:#e9f0fb;padding:10px 12px;border-radius:6px 6px 0 0;border:1px solid rgba(11,99,214,0.08);margin:-16px -16px 6px -16px">
+    <h2 style="margin:0;font-size:15px;padding:0;color:#000000;letter-spacing:2px">EDUCATION</h2>
+  </div>
+
+  <div style="margin-top: 8px; padding:0 6px 12px 0;">
+    <p>
+      <strong>B.Tech — Biomedical Engineering (2022–2026)</strong><br />
+      Perunthalaivar Kamarajar Institute of Engineering & Technology — GPA: 9.00 (Pursuing)
+    </p>
+
+    <p style="margin-top: 10px">
+      <strong>HSC — Computer Science (2021–2022)</strong><br />
+      SRVS National Higher Secondary School — Score: 82%
+    </p>
+
+    <p style="margin-top: 6px">
+      <strong>SSLC — General Education (2019–2020)</strong><br />
+      IQRA English High School — Score: 89%
+    </p>
+  </div>
+</section>
+
+
+       <!-- Technical Skills (final, black heading) -->
+<section class="card" role="region" aria-label="Technical skills">
+  <div style="background:#e9f0fb;padding:10px 12px;border-radius:6px 6px 0 0;border:1px solid rgba(11,99,214,0.08);margin:-16px -16px 6px -16px">
+    <h2 style="margin:0;font-size:15px;padding:0;color:#000000;letter-spacing:2px">TECHNICAL SKILLS</h2>
+  </div>
+
+  <ul style="margin:6px 0 0 18px; padding:0 6px 12px 0; color:var(--muted); line-height:1.6; list-style:disc;">
+    <li style="margin-bottom:8px">
+      <strong>Programming & Tools:</strong> Python, Pytorch, MATLAB, Google Colab, Jupyter Notebook
+    </li>
+    <li style="margin-bottom:8px">
+      <strong>Machine Learning & AI:</strong> Supervised/Unsupervised Learning (Regression, Classification, Clustering), CNNs, RNNs, ResNets basics
+    </li>
+    <li style="margin-bottom:8px">
+      <strong>Data Handling:</strong> Data Preprocessing, Stratified data splitting, Augmentation (Image-based)
+    </li>
+    <li style="margin-bottom:8px">
+      <strong>Biomedical Domain Knowledge:</strong> Medical Imaging basics (Fundus, ECG, MRI/CT concepts), Biomedical equipment exposure (through TMC Hospital Internship)
+    </li>
+    <li style="margin-bottom:0">
+      <strong>Other Tools:</strong> ,MS WORD (Documentation), MS Excel (data analysis), PowerPoint (Visual Reporting)
+    </li>
+  </ul>
+</section>
+
+
+        <!-- Internships (formatted like reference image) -->
+<section class="card" role="region" aria-label="Internships">
+  <div style="background:#e9f0fb;padding:10px 12px;border-radius:6px 6px 0 0;border:1px solid rgba(11,99,214,0.08);margin:-16px -16px 6px -16px">
+    <h2 style="margin:0;font-size:15px;padding:0;color:#000000;letter-spacing:2px">INTERNSHIPS</h2>
+  </div>
+
+  <div style="margin-top:10px; padding:0 6px 12px 0;">
+    <!-- Machine Learning Intern -->
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;">
+      <p style="margin:0;"><strong>MACHINE LEARNING INTERN</strong> | CEG, Anna University | Chennai, India</p>
+      <p style="margin:0;font-style:italic;color:var(--muted);">10 June ’25 – 20 June ’25</p>
+    </div>
+
+    <p style="margin-top:6px;">
+      Gained hands-on exposure to core machine learning and deep learning concepts, with practical training in supervised and unsupervised models, neural networks, and real-world applications. Strengthened skills in Python-based implementation and evaluation techniques.
+    </p>
+
+    <ul style="margin-top:6px;line-height:1.6;">
+      <li>Implemented algorithms such as SVM, Random Forest, CNNs, and RNNs through guided exercises and case studies.</li>
+      <li>Practiced model training, optimization, and evaluation using structured examples and supervised sessions.</li>
+    </ul>
+
+    <!-- Biomedical Intern -->
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;margin-top:14px;">
+      <p style="margin:0;"><strong>BIOMEDICAL INTERN</strong> | Thiruvarur Medical Centre | Thiruvarur, India</p>
+      <p style="margin:0;font-style:italic;color:var(--muted);">30 June ’25 – 12 July ’25</p>
+    </div>
+
+    <p style="margin-top:6px;">
+      Completed hospital-based training with exposure to biomedical practices and medical equipment handling. Gained understanding of clinical workflows and the role of biomedical engineering in healthcare delivery.
+    </p>
+
+    <ul style="margin-top:6px;line-height:1.6;">
+      <li>Observed and learned the operation, calibration, and maintenance of biomedical equipment under supervision.</li>
+      <li>Understood hospital safety protocols, patient-care support systems, and integration of technology in clinical environments.</li>
+    </ul>
+  </div>
+</section>
+
+
+        <!-- Projects (formatted like reference image) -->
+<section class="card" role="region" aria-label="Selected projects">
+  <div style="background:#e9f0fb;padding:10px 12px;border-radius:6px 6px 0 0;border:1px solid rgba(11,99,214,0.08);margin:-16px -16px 6px -16px">
+    <h2 style="margin:0;font-size:15px;padding:0;color:#000000;letter-spacing:2px">PROJECTS</h2>
+  </div>
+
+  <div style="margin-top:10px; padding:0 6px 12px 0; line-height:1.6;">
+    
+    <!-- Project 1 -->
+    <p style="margin:0;">
+      <strong>AI-Based Intraoral RGB Dental Image Analysis for Cavity Severity Classification</strong>
+      <em> (Waiting for paper acceptance)</em>
+    </p>
+    <ul style="margin-top:6px;">
+      <li>Implemented a Vision Transformer (ViT) model for multi-class classification of dental cavity severity (No, Early, Advance).</li>
+      <li>Designed and evaluated the pipeline with preprocessing, training, and validation to ensure balanced performance across classes.</li>
+    </ul>
+
+    <!-- Project 2 -->
+    <p style="margin-top:14px;margin-bottom:0;">
+      <strong>Diabetic Retinopathy Multiclass Classification using ConvNeXtV2 with SE Attention Mechanism</strong>
+      <em> (Waiting for paper acceptance)</em>
+    </p>
+    <ul style="margin-top:6px;">
+      <li>Developed a ConvNeXtV2-based deep learning architecture integrated with Squeeze-and-Excitation (SE) attention modules for 5-class diabetic retinopathy (DR) severity classification (No_DR, Mild, Moderate, Severe, Proliferate_DR).</li>
+      <li>Trained and optimized the model using LDAM (Label-Distribution-Aware Margin) loss to handle class imbalance and improve generalization on underrepresented DR stages.</li>
+    </ul>
+
+    <!-- Project 3 -->
+    <p style="margin-top:14px;margin-bottom:0;">
+      <strong>Dual-Task Deep Learning Model for Brain Tumor Classification and Segmentation</strong>
+    </p>
+    <ul style="margin-top:6px;">
+      <li>Developed a DenseNet121-based architecture for simultaneous brain tumor classification and segmentation.</li>
+      <li>Evaluated using accuracy, F1-score, Dice, and IoU metrics with visualized segmentation outputs.</li>
+    </ul>
+
+    <!-- Project 4 -->
+    <p style="margin-top:14px;margin-bottom:0;">
+      <strong>LED Distance Indicator using Ultrasonic Sensor</strong>
+      <em> (Mini Project)</em>
+    </p>
+    <ul style="margin-top:6px;">
+      <li>Built a hardware system to indicate object distance using Arduino and ultrasonic sensor.</li>
+      <li>Designed logic to display distance through LEDs for simple, real-time measurement.</li>
+    </ul>
+
+  </div>
+</section>
+
+
+        <!-- Workshops, Certifications & Skills (individual pop sections, each with blue left accent line) -->
+<section role="region" aria-label="Workshops and certifications">
+
+  <style>
+    /* ---------- Mini Pop Sections ---------- */
+    .mini {
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid rgba(16,24,40,0.06);
+      padding: 0;
+      margin: 14px 0;
+      box-shadow: 0 6px 18px rgba(14,30,37,0.04);
+      transition: all 0.2s ease;
+    }
+
+    .mini:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 28px rgba(14,30,37,0.10);
+    }
+
+    /* ---------- Header Bar with Blue Line ---------- */
+    .mini .bar {
+      background: #e9f0fb;
+      padding: 10px 12px;
+      border-radius: 6px 6px 0 0;
+      border-bottom: 1px solid rgba(11,99,214,0.06);
+      position: relative;
+    }
+
+    .mini .bar h3 {
+      margin: 0;
+      font-size: 15px;
+      letter-spacing: 2px;
+      color: #000;
+      font-family: "Times New Roman", serif;
+      position: relative;
+      padding-left: 10px; /* space for the blue bar */
+    }
+
+    .mini .bar h3::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 3px;
+      bottom: 3px;
+      width: 3px;
+      background-color: #0b63d6; /* blue line */
+      border-radius: 2px;
+    }
+
+    /* ---------- List styling ---------- */
+    .mini ul {
+      margin: 10px 0 12px 24px;
+      line-height: 1.6;
+      font-family: "Times New Roman", serif;
+      color: var(--muted);
+    }
+
+    .mini li {
+      margin-bottom: 6px;
+    }
+  </style>
+
+  <!-- WORKSHOPS -->
+  <div class="mini" tabindex="0" role="region" aria-label="Workshops">
+    <div class="bar"><h3>WORKSHOPS</h3></div>
+    <ul>
+      <li>AI and Biomedical Signal Processing — <strong>NIT Puducherry</strong> — <em>27–28 Feb 2025</em></li>
+      <li>MathWorks and Linux — <strong>NIT Trichy</strong> — <em>21 & 23 Feb 2025</em></li>
+      <li>Transforming Healthcare with AI — <strong>Amrita University, Coimbatore</strong> — <em>28–30 Nov 2024</em></li>
+    </ul>
+  </div>
+
+  <!-- CERTIFICATIONS -->
+  <div class="mini" tabindex="0" role="region" aria-label="Certifications">
+    <div class="bar"><h3>CERTIFICATIONS</h3></div>
+    <ul>
+      <li>UpGrad – Generative AI Foundations Certificate Program <em>(in collaboration with Microsoft)</em> — <em>Sep 2025</em></li>
+      <li>NPTEL – Ethics in Engineering Practice — <em>Score: 75%</em></li>
+      <li>NPTEL – Introduction to Industry 4.0 and Industrial Internet of Things — <em>Score: 68%</em></li>
+      <li>NPTEL – Cloud Computing — <em>Score: 66%</em></li>
+    </ul>
+  </div>
+
+  <!-- ONGOING CERTIFICATIONS -->
+  <div class="mini" tabindex="0" role="region" aria-label="Ongoing certifications">
+    <div class="bar"><h3>ONGOING CERTIFICATIONS</h3></div>
+    <ul>
+      <li>NPTEL – Developing Soft Skills and Personality — <em>Aug–Oct 2025 (Expected)</em></li>
+      <li>NPTEL – Machine Learning and Pattern Recognition — <em>Dec 2025 (Expected)</em></li>
+      <li>Hands-on Approach to AI for Real-World Applications — <strong>IIT Kharagpur & AI4CPS (TCS iON)</strong> — <em>2026 (Expected)</em></li>
+      <li>Python Bootcamp (Zero to Hero) — <strong>Udemy</strong> — <em>2025 (Expected)</em></li>
+    </ul>
+  </div>
+
+  <!-- PARTICIPATIONS -->
+  <div class="mini" tabindex="0" role="region" aria-label="Participations">
+    <div class="bar"><h3>PARTICIPATIONS</h3></div>
+    <ul>
+      <li>OpenHack 2025 (Ideation Round) — <em>Team Mission Masters, organized by Indian Institute of Science (IISc), Bangalore — Feb 2025</em></li>
+    </ul>
+  </div>
+
+  <!-- SKILLS AND INTERESTS -->
+  <div class="mini" tabindex="0" role="region" aria-label="Skills and interests">
+    <div class="bar"><h3>SKILLS AND INTERESTS</h3></div>
+    <ul>
+      <li><strong>Languages:</strong> English (Proficient), Tamil (Native)</li>
+      <li><strong>Interests:</strong> Music, Travelling, Continuous Learning</li>
+    </ul>
+  </div>
+
+</section>
+
+
+
+        <!-- Area of Interest (formatted like reference image) -->
+<section class="card" role="region" aria-label="Area of interest">
+  <div style="background:#e9f0fb;padding:10px 12px;border-radius:6px 6px 0 0;border:1px solid rgba(11,99,214,0.08);margin:-16px -16px 6px -16px">
+    <h2 style="margin:0;font-size:15px;padding:0;color:#000000;letter-spacing:2px">AREA OF INTEREST</h2>
+  </div>
+
+  <ul style="margin:8px 0 10px 18px; line-height:1.6;">
+    <li>Artificial Intelligence (AI) and its applications across industries</li>
+    <li>Machine Learning (ML) techniques for problem-solving and innovation</li>
+    <li>Data Science for real-world applications and decision support</li>
+    <li>Deep Learning approaches in Medical Imaging and Pattern Recognition</li>
+    <li>AI-driven solutions in Healthcare and Biomedical Engineering</li>
+  </ul>
+</section>
+
+<footer>© 2025 Abdul Rahman K — Portfolio</footer>
+</main> </div> </body> </html>
+
+
